@@ -9,23 +9,23 @@ let idCount = 0
 
 // Add new 
 function addTask(){
-    
     const inName = nameInput.value
     const inCategory = categoryInput.value
     const deadlineEntry = deadlineInput.value
     const inDeadLine = deadlineInput.value
 
-    let taskAdd = {
+    let newTask = {
         id: idCount++,
         name:inName,
         category: inCategory,
         deadline: inDeadLine,
         status: deadlineEntry
     }
-    tasks.push(taskAdd)
+   tasks.push(newTask)
 }
 
-addTaskBtn.addEventListener('click', ()=>{
+addTaskBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
     addTask()
+    console.log('db: ', tasks[0]);
 })
-console.log('db: '+tasks);
