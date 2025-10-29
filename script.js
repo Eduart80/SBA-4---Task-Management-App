@@ -1,6 +1,7 @@
 const nameInput = document.getElementById('task-name');
 const categoryInput = document.getElementById('task-category');
 const deadlineInput = document.getElementById('task-deadline');
+const statusInput = document.getElementById('task-status');
 const addTaskBtn = document.getElementById('add-task');
 const deleteBtn = document.getElementById('delete-last');
 
@@ -12,30 +13,34 @@ let idCount = 0
 function addTask(){
     const inName = nameInput.value
     const inCategory = categoryInput.value
-    const deadlineEntry = deadlineInput.value
     const inDeadLine = deadlineInput.value
-    idCount= tasks.length+1
+    const instatus = statusInput.value
+    idCount++
     
     let newTask = {
-        id: idCount,
+        id: tasks.length+1,
         name:inName,
         category: inCategory,
         deadline: inDeadLine,
-        status: deadlineEntry
+        status: instatus
     }
    tasks.push(newTask)
 }
 // Delete a task
 function deleteTask() {
-  tasks = tasks.pop()
+    try{
+        tasks = tasks.pop()
+    }catch{console.log('db: ', tasks);}
+
 }
 
 
 addTaskBtn.addEventListener('click', (e)=>{
     e.preventDefault();
     addTask()
-    console.log('db: ', tasks[0]);
+    console.log('db: ', tasks);
 })
 deleteBtn.addEventListener('click',()=>{
     deleteTask()
+    console.log('db: ', tasks);
 })
