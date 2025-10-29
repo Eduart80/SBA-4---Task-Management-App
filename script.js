@@ -40,7 +40,7 @@ function renderTask(){
         taskBody.innerHTML=''
         tasks.forEach((task) =>{
             let list = document.createElement('li')
-            list.textContent = `${task.name}`
+            list.textContent = `${task.name}, ${task.category}, ${task.deadline}, ${task.status} `
             taskBody.appendChild(list);
         }
     )
