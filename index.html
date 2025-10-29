@@ -18,6 +18,14 @@
         <input type="text" id="task-category" placeholder="Work, Personal" required />
         <label>Deadline</label>
             <input type="date" id="task-deadline" required />
+            <div class="row">
+                <label>Status</label>
+                <select id="task-status">
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
         <div class="row actions">
             <button type="submit" id="add-task">Add Task</button>
         </div>
