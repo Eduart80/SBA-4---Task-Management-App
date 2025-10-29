@@ -4,10 +4,10 @@ const deadlineInput = document.getElementById('task-deadline');
 const statusInput = document.getElementById('task-status');
 const addTaskBtn = document.getElementById('add-task');
 const deleteBtn = document.getElementById('delete-last');
+const taskBody = document.getElementById('tasksBody');
 
 // DB
 let tasks = [];
-let idCount = 0
 
 // Add new task
 function addTask(){
@@ -15,7 +15,6 @@ function addTask(){
     const inCategory = categoryInput.value
     const inDeadLine = deadlineInput.value
     const instatus = statusInput.value
-    idCount++
     
     let newTask = {
         id: tasks.length+1,
@@ -34,10 +33,25 @@ function deleteTask() {
 
 }
 
+function renderTask(){
+    if(tasks.length === 0){
+    taskBody.innerHTML = '<li colspan="5" class="center muted">No tasks match the current filters.</li>'
+    }else{
+        taskBody.innerHTML=''
+        tasks.forEach((task) =>{
+            let list = document.createElement('li')
+            list.textContent = `${task.name}`
+            taskBody.appendChild(list);
+        }
+    )
+}
+}
+renderTask()
 
 addTaskBtn.addEventListener('click', (e)=>{
-    e.preventDefault();
+   // e.preventDefault();
     addTask()
+    renderTask()
     console.log('db: ', tasks);
 })
 deleteBtn.addEventListener('click',()=>{
