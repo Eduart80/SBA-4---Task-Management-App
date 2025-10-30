@@ -35,6 +35,7 @@ function deleteTask() {
 
 function renderTask(){
     let today = new Date()
+    // let filterStatus = tasks.fiter()
     if(tasks.length === 0){
     taskBody.innerHTML = '<li colspan="5" class="center muted">No tasks match the current filters.</li>'
     }else{
