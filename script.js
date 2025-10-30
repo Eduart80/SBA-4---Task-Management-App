@@ -37,11 +37,15 @@ function deleteTask() {
 }
 
 function renderTask(){
+    let today = new Date()
     if(tasks.length === 0){
     taskBody.innerHTML = '<li colspan="5" class="center muted">No tasks match the current filters.</li>'
     }else{
         taskBody.innerHTML=''
         tasks.forEach((task) =>{
+            if(new Date(tasks.deadlineInput.value < today)){
+                tasks.status = 'Overdue'
+            }
             let list = document.createElement('li')
             let statusChange = document.createElement('select')
             list.textContent = `${task.name}, ${task.category}, ${task.deadline}, ${task.status} `
