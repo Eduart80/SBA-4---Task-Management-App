@@ -25,7 +25,7 @@ function addTask(){
         status: instatus
     }
    tasks.push(newTask)
-   
+
    nameInput.value=''
    categoryInput.value=''
    deadlineInput.value=''
@@ -69,10 +69,12 @@ deleteBtn.addEventListener('click',()=>{
 setStatus.addEventListener('click',()=>{
      const inName = nameInput.value
     const instatus = statusInput.value
-    tasks.forEach((user)=>{
-        if(user===inName){
-            tasks.status = instatus
-        }else{return `${inName} is not in the list` }
-    })
+    tasks.forEach((task) => {
+        if (task.name === inName) {
+            task.status = instatus;
+        }
+    });
+    renderTask();
+    console.log(tasks);
 })
 
