@@ -24,12 +24,9 @@ function addTask(){
         deadline: inDeadLine,
         status: instatus
     }
-   tasks.push(newTask)
-
-   nameInput.value=''
-   categoryInput.value=''
-   deadlineInput.value=''
-   statusInput.value=''
+    tasks.push(newTask)
+    cleanAfter()
+   
 }
 // Delete a task
 function deleteTask() {
@@ -49,10 +46,8 @@ function renderTask(){
             let statusChange = document.createElement('select')
             list.textContent = `${task.name}, ${task.category}, ${task.deadline}, ${task.status} `
             taskBody.appendChild(list);
-
-        }
-    )
-}
+        })
+    }
 }
 renderTask()
 
@@ -60,14 +55,13 @@ addTaskBtn.addEventListener('click', (e)=>{
    // e.preventDefault();
     addTask()
     renderTask()
-    console.log('db: ', tasks);
 })
 deleteBtn.addEventListener('click',()=>{
     deleteTask()
     console.log('db: ', tasks);
 })
 setStatus.addEventListener('click',()=>{
-     const inName = nameInput.value
+    const inName = nameInput.value
     const instatus = statusInput.value
     tasks.forEach((task) => {
         if (task.name === inName) {
@@ -75,6 +69,12 @@ setStatus.addEventListener('click',()=>{
         }
     });
     renderTask();
-    console.log(tasks);
+    cleanAfter()
 })
 
+function cleanAfter(){
+    nameInput.value=''
+    categoryInput.value=''
+    deadlineInput.value=''
+    statusInput.value=''
+}
