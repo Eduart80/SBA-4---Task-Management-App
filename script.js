@@ -5,6 +5,7 @@ const statusInput = document.getElementById('task-status');
 const addTaskBtn = document.getElementById('add-task');
 const deleteBtn = document.getElementById('delete-last');
 const taskBody = document.getElementById('tasksBody');
+const setStatus = document.getElementById('change-status');
 
 // DB
 let tasks = [];
@@ -24,6 +25,11 @@ function addTask(){
         status: instatus
     }
    tasks.push(newTask)
+   
+   nameInput.value=''
+   categoryInput.value=''
+   deadlineInput.value=''
+   statusInput.value=''
 }
 // Delete a task
 function deleteTask() {
@@ -40,8 +46,10 @@ function renderTask(){
         taskBody.innerHTML=''
         tasks.forEach((task) =>{
             let list = document.createElement('li')
+            let statusChange = document.createElement('select')
             list.textContent = `${task.name}, ${task.category}, ${task.deadline}, ${task.status} `
             taskBody.appendChild(list);
+
         }
     )
 }
@@ -58,3 +66,13 @@ deleteBtn.addEventListener('click',()=>{
     deleteTask()
     console.log('db: ', tasks);
 })
+setStatus.addEventListener('click',()=>{
+     const inName = nameInput.value
+    const instatus = statusInput.value
+    tasks.forEach((user)=>{
+        if(user===inName){
+            tasks.status = instatus
+        }else{return `${inName} is not in the list` }
+    })
+})
+
