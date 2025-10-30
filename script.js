@@ -83,3 +83,20 @@ function cleanAfter(){
     deadlineInput.value=''
     statusInput.value=''
 }
+
+let res = [1,2,3,4,5,6]
+let dy = {
+    name:"tom",
+    last:"moli",
+    age:"23",
+    year:"2011",
+    color:"black"
+}
+dy.map(pop=>{
+    console.log(pop);
+    
+})
+for(let prop in dy){
+    console.log(prop);
+    
+}
