@@ -7,6 +7,7 @@ const deleteBtn = document.getElementById('delete-last');
 const taskBody = document.getElementById('tasksBody');
 const setStatus = document.getElementById('change-status');
 //Filters
+const allStatus = document.getElementById('list-all');
 const pendingStatus = document.getElementById('list-pending');
 const inprogressStatus = document.getElementById('list-inprogress');
 const completedStatus = document.getElementById('list-completed');
@@ -86,3 +87,13 @@ function cleanAfter(){
     deadlineInput.value=''
     statusInput.value="noSelection"
 }
+allStatus.addEventListener('click',()=>{
+})
+pendingStatus.addEventListener('click',()=>{
+    
+})
+inprogressStatus.addEventListener('click',()=>{})
+completedStatus.addEventListener('click',()=>{})
+overdueStatus.addEventListener('click',()=>{})
+workStatus.addEventListener('click',()=>{})
+personalStatus.addEventListener('click',()=>{})
