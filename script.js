@@ -6,6 +6,13 @@ const addTaskBtn = document.getElementById('add-task');
 const deleteBtn = document.getElementById('delete-last');
 const taskBody = document.getElementById('tasksBody');
 const setStatus = document.getElementById('change-status');
+//Filters
+const pendingStatus = document.getElementById('list-pending');
+const inprogressStatus = document.getElementById('list-inprogress');
+const completedStatus = document.getElementById('list-completed');
+const overdueStatus = document.getElementById('list-overdue');
+const workStatus = document.getElementById('list-work');
+const personalStatus = document.getElementById('list-personal');
 
 // DB
 let tasks = [];
@@ -35,7 +42,6 @@ function deleteTask() {
 
 function renderTask(){
     let today = new Date()
-    // let filterStatus = tasks.fiter()
     if(tasks.length === 0){
     taskBody.innerHTML = '<li colspan="5" class="center muted">No tasks match the current filters.</li>'
     }else{
