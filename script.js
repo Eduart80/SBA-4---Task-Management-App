@@ -30,10 +30,7 @@ function addTask(){
 }
 // Delete a task
 function deleteTask() {
-    try{
-        tasks = tasks.pop()
-    }catch{console.log('db: ', tasks);}
-
+     tasks.pop()
 }
 
 function renderTask(){
@@ -42,13 +39,12 @@ function renderTask(){
     taskBody.innerHTML = '<li colspan="5" class="center muted">No tasks match the current filters.</li>'
     }else{
         taskBody.innerHTML=''
-        
         tasks.forEach((task) =>{
             if (task.status !== 'Completed' && new Date(task.deadline) < today) {
             task.status = 'Overdue';
             }   
             let list = document.createElement('li')
-            let statusChange = document.createElement('select')
+            document.createElement('select')
             list.textContent = `${task.name}, ${task.category}, ${task.deadline}, ${task.status} `
             taskBody.appendChild(list);
         })
@@ -63,7 +59,7 @@ addTaskBtn.addEventListener('click', (e)=>{
 })
 deleteBtn.addEventListener('click',()=>{
     deleteTask()
-    console.log('db: ', tasks);
+    renderTask()
 })
 setStatus.addEventListener('click',()=>{
     const inName = nameInput.value
@@ -81,22 +77,5 @@ function cleanAfter(){
     nameInput.value=''
     categoryInput.value=''
     deadlineInput.value=''
-    statusInput.value=''
-}
-
-let res = [1,2,3,4,5,6]
-let dy = {
-    name:"tom",
-    last:"moli",
-    age:"23",
-    year:"2011",
-    color:"black"
-}
-dy.map(pop=>{
-    console.log(pop);
-    
-})
-for(let prop in dy){
-    console.log(prop);
-    
+    statusInput.value="noSelection"
 }

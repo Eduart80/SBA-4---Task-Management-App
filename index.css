@@ -1,0 +1,19 @@
+body{
+    background-color: rgb(156, 213, 213);
+}
+.card{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    width: 300px;
+}
+.row {
+    padding: 5px 5px;
+}
+.row button{
+    padding: 5px 5px;
+    border-radius: 5px;
+    background-color: rgb(130, 243, 167);
+    border: 0.5px solid green;
+}
