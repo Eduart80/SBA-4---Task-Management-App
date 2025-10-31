@@ -62,9 +62,6 @@ function renderTask(){
                 return 'All'
            }
         })
-        console.log('filter' + filterOption);
-        console.log('lop '+selectFilter);
-        
         filterOption.forEach((task) =>{
             if (task.status !== 'Completed' && new Date(task.deadline) < today) {
             task.status = 'Overdue';
