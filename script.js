@@ -48,15 +48,24 @@ function renderTask(){
     taskBody.innerHTML = '<li colspan="5" class="center muted">No tasks match the current filters.</li>'
     }else{
         taskBody.innerHTML=''
-        let filterOption = tasks.forEach((t)=> {
-            if(selectFilter === 'All') return 'All'
-            if(selectFilter === 'Pending') return 'Pending'
-            return true
+        let filterOption = tasks.filter((task)=> {
+           switch( selectFilter ){
+            case "Pending":
+                return task.status === 'Pending'
+            case "In Progress":
+                 return task.status === 'In Progress';
+            case 'Completed':
+                return task.status === 'Completed';
+            case 'Overdue':
+                return task.status === 'Overdue';
+            default:
+                return 'All'
+           }
         })
         console.log('filter' + filterOption);
         console.log('lop '+selectFilter);
         
-        tasks.forEach((task) =>{
+        filterOption.forEach((task) =>{
             if (task.status !== 'Completed' && new Date(task.deadline) < today) {
             task.status = 'Overdue';
             }   
