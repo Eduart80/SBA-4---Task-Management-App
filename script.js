@@ -19,6 +19,7 @@ const personalStatus = document.getElementById('list-personal');
 let tasks = [];
 let selectFilter = 'All'
 
+
 // Add new task
 function addTask(){
     const inName = nameInput.value
@@ -58,10 +59,16 @@ function renderTask(){
                 return task.status === 'Completed';
             case 'Overdue':
                 return task.status === 'Overdue';
+            case 'Work':
+                return task.status === 'Work';
+            case 'Personal':
+                return task.status === 'Personal';
             default:
                 return 'All'
            }
+           
         })
+        console.log(selectFilter);
         filterOption.forEach((task) =>{
             if (task.status !== 'Completed' && new Date(task.deadline) < today) {
             task.status = 'Overdue';
