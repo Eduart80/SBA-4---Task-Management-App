@@ -60,9 +60,9 @@ function renderTask(){
             case 'Overdue':
                 return task.status === 'Overdue';
             case 'Work':
-                return task.status === 'Work';
+                return task.category === 'Work';
             case 'Personal':
-                return task.status === 'Personal';
+                return task.category === 'Personal';
             default:
                 return 'All'
            }
