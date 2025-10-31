@@ -49,25 +49,24 @@ function renderTask(){
     taskBody.innerHTML = '<li colspan="5" class="center muted">No tasks match the current filters.</li>'
     }else{
         taskBody.innerHTML=''
-        let filterOption = tasks.filter((task)=> {
-           switch( selectFilter ){
-            case "Pending":
-                return task.status === 'Pending'
-            case "In Progress":
-                 return task.status === 'In Progress';
-            case 'Completed':
-                return task.status === 'Completed';
-            case 'Overdue':
-                return task.status === 'Overdue';
-            case 'Work':
-                return task.category === 'Work';
-            case 'Personal':
-                return task.category === 'Personal';
-            default:
-                return 'All'
-           }
-           
-        })
+        let filterOption = tasks.filter((task) => {
+            switch (selectFilter) {
+                case "Pending":
+                    return task.status === 'Pending';
+                case "In Progress":
+                    return task.status === 'In Progress';
+                case 'Completed':
+                    return task.status === 'Completed';
+                case 'Overdue':
+                    return task.status === 'Overdue';
+                case 'work':
+                    return task.category === 'work';
+                case 'personal':
+                    return task.category === 'personal';
+                default:
+                    return true;
+            }
+        });
         console.log(selectFilter);
         filterOption.forEach((task) =>{
             if (task.status !== 'Completed' && new Date(task.deadline) < today) {
@@ -131,10 +130,10 @@ overdueStatus.addEventListener('click',()=>{
     renderTask()
 })
 workStatus.addEventListener('click',()=>{  
-    selectFilter='Work'
+    selectFilter='work'
     renderTask()
 })
 personalStatus.addEventListener('click',()=>{  
-    selectFilter='Personal'
+    selectFilter='personal'
     renderTask()
 })
