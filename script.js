@@ -49,9 +49,11 @@ function renderTask(){
     }else{
         taskBody.innerHTML=''
         let filterOption = tasks.forEach((t)=> {
-            if(t.status === 'Pending') return true
+            if(selectFilter === 'All') return 'All'
+            if(selectFilter === 'Pending') return 'Pending'
+            return true
         })
-        console.log(filterOption);
+        console.log('filter' + filterOption);
         console.log('lop '+selectFilter);
         
         tasks.forEach((task) =>{
@@ -94,6 +96,7 @@ function cleanAfter(){
     deadlineInput.value=''
     statusInput.value="noSelection"
 }
+
 allStatus.addEventListener('click',()=>{
     selectFilter = 'All'
     renderTask()
@@ -102,8 +105,23 @@ pendingStatus.addEventListener('click',()=>{
     selectFilter='Pending'
     renderTask()
 })
-inprogressStatus.addEventListener('click',()=>{})
-completedStatus.addEventListener('click',()=>{})
-overdueStatus.addEventListener('click',()=>{})
-workStatus.addEventListener('click',()=>{})
-personalStatus.addEventListener('click',()=>{})
+inprogressStatus.addEventListener('click',()=>{
+      selectFilter='In Progress'
+    renderTask()
+})
+completedStatus.addEventListener('click',()=>{
+      selectFilter='Completed'
+    renderTask()
+})
+overdueStatus.addEventListener('click',()=>{
+      selectFilter='Overdue'
+    renderTask()
+})
+workStatus.addEventListener('click',()=>{  
+    selectFilter='Work'
+    renderTask()
+})
+personalStatus.addEventListener('click',()=>{  
+    selectFilter='Personal'
+    renderTask()
+})
