@@ -50,7 +50,7 @@ function renderTask(){
         taskBody.innerHTML=''
         let filterOption1 = tasks.forEach((t)=> {
 
-            console.log(tasks.status + 'Pending');
+            console.log(t.status + 'Pending');
         })
             
         
