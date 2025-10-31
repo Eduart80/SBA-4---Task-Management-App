@@ -17,7 +17,7 @@ const personalStatus = document.getElementById('list-personal');
 
 // DB
 let tasks = [];
-let selectAll = 'All'
+let selectFilter = 'All'
 
 // Add new task
 function addTask(){
@@ -48,14 +48,11 @@ function renderTask(){
     taskBody.innerHTML = '<li colspan="5" class="center muted">No tasks match the current filters.</li>'
     }else{
         taskBody.innerHTML=''
-        let filterOption1 = tasks.forEach((t)=> {
-
-            console.log(t.status + 'Pending');
+        let filterOption = tasks.forEach((t)=> {
+            if(t.status === 'Pending') return true
         })
-            
-        
-        let selectedOption2 = (selectAll==='Pending')
-        console.log(filterOption1);
+        console.log(filterOption);
+        console.log('lop '+selectFilter);
         
         tasks.forEach((task) =>{
             if (task.status !== 'Completed' && new Date(task.deadline) < today) {
@@ -98,10 +95,12 @@ function cleanAfter(){
     statusInput.value="noSelection"
 }
 allStatus.addEventListener('click',()=>{
+    selectFilter = 'All'
     renderTask()
 })
 pendingStatus.addEventListener('click',()=>{
-    
+    selectFilter='Pending'
+    renderTask()
 })
 inprogressStatus.addEventListener('click',()=>{})
 completedStatus.addEventListener('click',()=>{})
